@@ -13,7 +13,6 @@ export const Shortener = () => {
         `https://api.shrtco.de/v2/shorten?url== ${originalUrl}`
       );
       setShortUrl(response?.data?.result?.full_short_link3);
-      setOriginalUrl("");
     } catch (e) {
       console.log("Error occurred", e.message);
     }
@@ -39,7 +38,14 @@ export const Shortener = () => {
               <Button>Copy To Clipboard</Button>
             </CopyToClipboard>
           </InnerContainer>
-          <Button onClick={() => setShortUrl("")}>Clear ShortUrl</Button>
+          <Button
+            onClick={() => {
+              setShortUrl("");
+              setOriginalUrl("");
+            }}
+          >
+            Clear ShortUrl
+          </Button>
         </>
       )}
     </Container>
